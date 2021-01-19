@@ -1,0 +1,83 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paridhi Modi</title>
+
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<title>Product Review Sentiment Analyser</title>
+</head>
+<style>
+h3{color:white;
+text-align: center;
+background-color: orange;}
+h4{color:orange;
+text-align: left;}
+h1 {
+    background-color: orange;
+  color: white;
+  font-size: 2em;
+  padding: 30px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.card {
+  background-color: orange;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0.8,0.2);
+  transition: 0.3s;
+  text-align: center;
+  width: 60%;
+
+  margin: 50 auto;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+<body style="background-color: black;">
+
+<div class= "w4-container w4-gray">
+    <h1>Sentiment Analyser for a product's review</h1>
+    <img src="{{ image }}" alt="User Image" class="center">
+    <br>
+    <br>
+    <div class="card">
+        <form action="\seclassifier"  method="POST">
+        <label>Please type here</label>
+        <input type="text" name="text" id="text" size="50" height="150">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <h3>{{prediction_text}}</h3>
+    <img src="{{ user_image }}" alt="User Image" class="center">
+    <h4>©PARIDHI MODI</h4>
+</div>
+</body>
+
+</html>
