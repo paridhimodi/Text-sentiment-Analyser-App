@@ -24,7 +24,7 @@ model.load_weights('m-weights (2).h5')
 IMAGE_FOLDER = os.path.join('static', 'img_pool')
 app.config['UPLOAD_FOLDER'] = IMAGE_FOLDER
 
-my_file = open(os.path.join('', 'custom_word_embedding (2).txt'), encoding='utf-8')
+# my_file = open(os.path.join('', 'custom_word_embedding (2).txt'), encoding='utf-8')
 
 @app.route('/')
 def home():
