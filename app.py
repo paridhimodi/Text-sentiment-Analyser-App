@@ -11,19 +11,21 @@ from keras.models import  load_model
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.utils import to_categorical
-
+import pickle
 
 
 
 
 app = Flask(__name__)
-padding_size = 1000
-model = load_model('M_model.h5')
-model.load_weights('M_weights.h5')
+padding_size = 300
+model = load_model('M.h5')
+model.load_weights('w (1).h5')
 
 IMAGE_FOLDER = os.path.join('static', 'img_pool')
 app.config['UPLOAD_FOLDER'] = IMAGE_FOLDER
 
+with open('tokenizer.pickle', 'rb') as handle:
+    tokenizer = pickle.load(handle)
 # my_file = open(os.path.join('', 'custom_word_embedding (2).txt'), encoding='utf-8')
 
 @app.route('/')
@@ -36,10 +38,11 @@ def predict_sentiment():
     if request.method == 'POST':
         text = request.form['text']
         text = [text]
-        tokenizer = Tokenizer()
+        
+            
         tokenizer.fit_on_texts(text)
         seq = tokenizer.texts_to_sequences(text)
-        padded = pad_sequences(seq, maxlen=500)
+        padded = pad_sequences(seq, maxlen=300)
         # predictions = predict_fn(text, padding_size)
         pred = model.predict(padded)
 
