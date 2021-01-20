@@ -43,13 +43,11 @@ def predict_sentiment():
         # predictions = predict_fn(text, padding_size)
         pred = model.predict(padded)
 
-        class_names = ['positive', 'negative', 'neutral']
+        class_names = ['positive', 'negative']
         preds = np.argmax(pred)
         preds= class_names[preds]
         if preds=='positive':
             filename = os.path.join(app.config['UPLOAD_FOLDER'], 'happy.jpg')
-        elif preds=='neutral':
-            filename = os.path.join(app.config['UPLOAD_FOLDER'], 'neutral.jpg')
         else:
             filename = os.path.join(app.config['UPLOAD_FOLDER'], 'sad.jpg')
         return  render_template('index.html',  prediction_text="sentiment of this text is: {} ".format(preds), user_image = filename)
