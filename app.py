@@ -19,7 +19,7 @@ from keras.utils import to_categorical
 app = Flask(__name__)
 padding_size = 1000
 model = load_model('M_model.h5')
-model.load_weights('M_weights (6).h5')
+model.load_weights('M_weights.h5')
 
 IMAGE_FOLDER = os.path.join('static', 'img_pool')
 app.config['UPLOAD_FOLDER'] = IMAGE_FOLDER
