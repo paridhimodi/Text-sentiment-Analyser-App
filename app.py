@@ -18,8 +18,8 @@ from keras.utils import to_categorical
 
 app = Flask(__name__)
 padding_size = 1000
-model = load_model('model (1).h5')
-model.load_weights('m-weights (2).h5')
+model = load_model('model (4).h5')
+model.load_weights('m-weights (6).h5')
 
 IMAGE_FOLDER = os.path.join('static', 'img_pool')
 app.config['UPLOAD_FOLDER'] = IMAGE_FOLDER
@@ -43,15 +43,11 @@ def predict_sentiment():
         # predictions = predict_fn(text, padding_size)
         pred = model.predict(padded)
 
-        class_names = ['joy', 'fear', 'anger', 'sadness', 'neutral']
+        class_names = ['positive', 'negative', 'neutral']
         preds = np.argmax(pred)
         preds= class_names[preds]
-        if preds=='joy':
+        if preds=='positive':
             filename = os.path.join(app.config['UPLOAD_FOLDER'], 'happy.jpg')
-        elif preds=='fear':
-            filename = os.path.join(app.config['UPLOAD_FOLDER'], 'fare.jpg')
-        elif preds=='anger':
-            filename = os.path.join(app.config['UPLOAD_FOLDER'], 'angry.jpg')
         elif preds=='neutral':
             filename = os.path.join(app.config['UPLOAD_FOLDER'], 'neutral.jpg')
         else:
