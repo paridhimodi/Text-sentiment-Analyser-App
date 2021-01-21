@@ -38,8 +38,9 @@ def predict_sentiment():
     if request.method == 'POST':
         text = request.form['text']
         text = [text]
+        with open('tokenizer.pickle', 'rb') as handle:
+           tokenizer = pickle.load(handle)
         
-            
         tokenizer.fit_on_texts(text)
         seq = tokenizer.texts_to_sequences(text)
         padded = pad_sequences(seq, maxlen=300)
