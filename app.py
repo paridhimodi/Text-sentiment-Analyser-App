@@ -17,6 +17,9 @@ import pickle
 
 
 app = Flask(__name__)
+app.debug = True
+app.run()
+
 padding_size = 300
 model = load_model('M.h5')
 model.load_weights('w (1).h5')
