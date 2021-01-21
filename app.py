@@ -4,6 +4,7 @@ import tqdm
 import re
 import tensorflow as tf
 from flask import Flask,  render_template, request
+from flask_cors import cross_origin
 import logging
 import numpy as np
 # preparing input to our model
@@ -30,11 +31,13 @@ app.config['UPLOAD_FOLDER'] = IMAGE_FOLDER
 # my_file = open(os.path.join('', 'custom_word_embedding (2).txt'), encoding='utf-8')
 
 @app.route('/')
+@cross_origin()
 def home():
     f = os.path.join(app.config['UPLOAD_FOLDER'], 'SENTIMENTs.jpg')
     return render_template('index.html', image = f)
 
-@app.route('/seclassifier', methods = ['POST'])
+@app.route('/seclassifier', methods = ['GET','POST'])
+@cross_origin()
 def predict_sentiment():
     if request.method == 'POST':
         text = request.form['text']
@@ -59,4 +62,4 @@ def predict_sentiment():
 
     return render_template("index.html")
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port='8000', debug=True)
+    app.run(host='127.0.0.1', port=5001, debug=True)
