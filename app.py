@@ -37,8 +37,7 @@ def predict_sentiment():
         text = request.form['text']
         text = [text]
         
-        with open('tokenizer.pickle', 'rb') as handle:
-           tokenizer = pickle.load(handle)
+        tokenizer = pickle.load(open("tokenizer.pkl", "rb"))
         
         tokenizer.fit_on_texts(text)
         seq = tokenizer.texts_to_sequences(text)
