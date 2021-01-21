@@ -24,8 +24,6 @@ model.load_weights('w (1).h5')
 IMAGE_FOLDER = os.path.join('static', 'img_pool')
 app.config['UPLOAD_FOLDER'] = IMAGE_FOLDER
 
-with open('tokenizer.pickle', 'rb') as handle:
-    tokenizer = pickle.load(handle)
 # my_file = open(os.path.join('', 'custom_word_embedding (2).txt'), encoding='utf-8')
 
 @app.route('/')
@@ -38,6 +36,7 @@ def predict_sentiment():
     if request.method == 'POST':
         text = request.form['text']
         text = [text]
+        
         with open('tokenizer.pickle', 'rb') as handle:
            tokenizer = pickle.load(handle)
         
