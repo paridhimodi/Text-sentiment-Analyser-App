@@ -18,7 +18,7 @@ import pickle
 
 
 app = Flask(__name__)
-app.debug = True
+
 
 padding_size = 300
 model = load_model('M.h5')
@@ -61,4 +61,4 @@ def predict_sentiment():
 
     return render_template("index.html")
 if __name__ == "__main__":
-    app.run( port=5001, debug=True)
+    app.run(host='127.0.0.1', port=5001, debug=True)
