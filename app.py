@@ -42,9 +42,9 @@ def predict_sentiment():
         text = request.form['text']
         text = [text]
         
-        tokenizer = pickle.load(open("tokenizer.pkl", "rb"))
-        
-        tokenizer.fit_on_texts(text)
+        with open('tokenizer (1).pickle', 'rb') as handle:
+            tokenizer = pickle.load(handle)
+            
         seq = tokenizer.texts_to_sequences(text)
         padded = pad_sequences(seq, maxlen=300)
         # predictions = predict_fn(text, padding_size)
